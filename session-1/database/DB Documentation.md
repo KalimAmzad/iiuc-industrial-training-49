@@ -22,16 +22,16 @@ This documentation is designed to guide industrial training participants through
 #### Entities and Their Attributes
 
 1. **News**: Represents individual news articles.
-   - **Attributes**: id, category_id, author_id, editor_id, datetime, title, body, link
+   - **Attributes**: id, category_id, reporter_id, publisher_id, datetime, title, body, link
 
 2. **Category**: Represents the category of the news (e.g., Sports, Politics).
    - **Attributes**: id, name
 
-3. **Author**: Represents the author of the news article.
+3. **Reporter**: Represents the reporter of the news article.
    - **Attributes**: id, name, email
 
-4. **Editor**: Represents the editor who edited the news article.
-   - **Attributes**: id, name, email
+4. **Publisher**: Represents the publisher who publish the news article.
+   - **Attributes**: id, name, email, head_office_address, phone_number, website, facebook, twitter, linkedin, instagram
 
 5. **Image**: Represents images associated with the news article.
    - **Attributes**: id, news_id, image_url
@@ -41,7 +41,7 @@ This documentation is designed to guide industrial training participants through
 
 #### Relationships
 
-- A **News** article belongs to one **Category**, one **Author**, and one **Editor**.
+- A **News** article belongs to one **Category**, one **Reporter**, and one **Publisher**
 - A **News** article can have multiple **Images**.
 - Each **News** article has one **Summary**.
 
@@ -83,23 +83,23 @@ categories:
 | 1  | Politics | Political news    |
 | 2  | Sports   | Sports activities |
 
-authors:
+reporters:
 | id | name       | email                |
 |----|------------|----------------------|
 | 1  | John Doe   | johndoe@example.com  |
 | 2  | Jane Smith | janesmith@example.com|
 
-editors:
+publishers:
 | id | name       | email                |
 |----|------------|----------------------|
-| 1  | Alice Wong | alicew@example.com   |
-| 2  | Bob Lee    | boblee@example.com   |
+| 1  | BBC | bbc@example.com   |
+| 2  | AL Jazeera    | aljazeera@example.com   |
 
 news:
-| id | category_id | author_id | editor_id | datetime            | title         | body               | link                  |
-|----|-------------|-----------|-----------|---------------------|---------------|--------------------|-----------------------|
-| 1  | 1           | 1         | 1         | 2023-01-01 10:00:00 | Election 2023 | Details about...   | http://example.com/n1 |
-| 2  | 2           | 2         | 2         | 2023-01-02 15:00:00 | Soccer Match  | Soccer match...    | http://example.com/n2 |
+| id | category_id | reporter_id | publisher_id | datetime            | title         | body               | link                  |
+|----|-------------|-------------|--------------|---------------------|---------------|--------------------|-----------------------|
+| 1  | 1           | 1           | 1            | 2023-01-01 10:00:00 | Election 2023 | Details about...   | http://example.com/n1 |
+| 2  | 2           | 2           | 2            | 2023-01-02 15:00:00 | Soccer Match  | Soccer match...    | http://example.com/n2 |
 
 images:
 | id | news_id | image_url                      |
