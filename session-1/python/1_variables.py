@@ -1,50 +1,55 @@
 # Python Basics: Variables and Data Types
 
-"""
-Author: Kalim Amzad Chy
-Email: kalim.amzad.chy@gmail.com
+# ......................................................................
+# Assignment done by: C201032- Sorowar Mahabub
+# ......................................................................
 
-This Python script is designed to teach you the basics of variables and data types in Python.
-We will cover:
-1. What variables are and how to use them.
-2. The basic data types in Python.
-3. Variable naming conventions and industry standards.
-4. Python's dynamic typing feature.
 
-Each section includes explanations, examples, and assignments to reinforce your learning.
-"""
+
+# Author: Kalim Amzad Chy
+# Email: kalim.amzad.chy@gmail.com
+
+# This Python script is designed to teach you the basics of variables and data types in Python.
+# We will cover:
+# 1. What variables are and how to use them.
+# 2. The basic data types in Python.
+# 3. Variable naming conventions and industry standards.
+# 4. Python's dynamic typing feature.
+
+# Each section includes explanations, examples, and assignments to reinforce your learning.
+
 
 # Section 1: Variables
 # ---------------------
 # Variables are containers for storing data values. In Python, a variable is created the moment you first assign a value to it.
 
 # Example 1: Creating Variables
-x = 5
-y = "Hello, Python learners!"
+# x = 5
+# y = "Hello, Python learners!"
 
-# You can print the variables to see their values.
+# # You can print the variables to see their values.
 # print(x)
 # print(y)
 
 # Assignment 1: Create two variables, one holding a number and the other holding your name. Then print both.
 # Write your code below:
-age = 22
-name = "Ibrahim bin Karim"
+age = 24
+name = "Sorowar Mahabub"
 
-# print("Age: ", age, end="; ")
-# print("Name: ", name)
+print("Age: ", age, end="; ")
+print("Name: ", name)
 
 # Section 2: Data Types
 # ---------------------
 # Python has various data types including integers, float (decimal numbers), strings, booleans, and more.
 
 # Example 2: Data Types
-a = 5               # int
-b = 3.14            # float
-c = "Python"        # str
-d = True            # bool
+# a = 5               # int
+# b = 3.14            # float
+# c = "Python"        # str
+# d = True            # bool
 
-# You can check the type of any variable by using the type() function.
+# # You can check the type of any variable by using the type() function.
 # print(type(a))
 # print(type(b))
 # print(type(c))
@@ -52,6 +57,16 @@ d = True            # bool
 
 # Assignment 2: Create variables of different types and use the type() function to check their types.
 # Write your code below:
+int_var = 32
+float_var = 32.32
+str_var = "Sorowar"
+bool_var = True
+
+print(type(int_var))
+print(type(float_var))
+print(type(str_var))
+print(type(bool_var))
+
 
 
 # Section 3: Variable Naming Conventions and Industry Standards
@@ -67,12 +82,18 @@ Industry standards often follow the 'snake_case' naming style for variables in P
 """
 
 # Example 3: Good and Bad Variable Names
-good_name = "John"
-_bad_name = 23
+# good_name = "John"
+# _bad_name = 23
 # 2bad = 42  # This will raise a SyntaxError because variable names cannot begin with a number.
 
 # Assignment 3: Fix the bad variable name above and create three more variables with good naming practices.
 # Write your code below:
+int_var_2 = 23
+float_var_2 = 23.23
+str_var_2 = "Mahabub"
+another_bool_var = True
+one_more_good_var = "Sorowar Mahabub"
+another_good_var = "ID: C201032"
 
 
 # Section 4: Python's Dynamic Typing
@@ -80,17 +101,21 @@ _bad_name = 23
 # Python is dynamically typed, which means you don’t have to declare the type of variable while declaring it.
 
 # Example 4: Dynamic Typing
-var = "I am a string"
-print(var)
+# var = "I am a string"
+# print(var)
 
-var = 42
-print(var)
+# var = 42
+# print(var)
 
 # The variable 'var' changes type from str to int, demonstrating Python's dynamic typing.
 
 # Assignment 4: Create a variable, assign it a value of one type, then reassign it to a different type and print both.
 # Write your code below:
+good_variable = "C201032"
+print(good_variable)
 
+good_variable = 32
+print(good_variable)
 
 # Congratulations on completing this part of the Python workshop!
 # Review the assignments, try to solve them, and check your understanding of variables and data types.
