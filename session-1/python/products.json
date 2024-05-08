@@ -1,0 +1,32 @@
+[
+    {
+        "Product ID": "101",
+        "Product Name": "Widget A",
+        "Price": "10.99",
+        "Stock Quantity": "50"
+    },
+    {
+        "Product ID": "102",
+        "Product Name": "Widget B",
+        "Price": "15.49",
+        "Stock Quantity": "30"
+    },
+    {
+        "Product ID": "103",
+        "Product Name": "Widget C",
+        "Price": "20.99",
+        "Stock Quantity": "20"
+    },
+    {
+        "Product ID": "104",
+        "Product Name": "Widget D",
+        "Price": "25.99",
+        "Stock Quantity": "10"
+    },
+    {
+        "Product ID": "105",
+        "Product Name": "Widget E",
+        "Price": "30.49",
+        "Stock Quantity": "5"
+    }
+]
