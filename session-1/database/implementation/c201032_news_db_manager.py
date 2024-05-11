@@ -23,7 +23,7 @@ def create_db_connection():
             passwd=os.getenv("DB_PASS"),
             database=os.getenv("DB_NAME")
         )
-        print("MySQL Database connection successful")
+        print("MySQL Database connection successful! Done by- Sorowar Mahabub, C201032!")
         return connection
     except Error as e:
         print(f"The error '{e}' occurred")
@@ -97,33 +97,41 @@ def create_tables(connection):
         description TEXT
     );
     """
-    create_authors_table = """
-    CREATE TABLE IF NOT EXISTS authors (
+    create_repoters_table = """
+    CREATE TABLE IF NOT EXISTS repoters (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL
     );
     """
-    create_editors_table = """
-    CREATE TABLE IF NOT EXISTS editors (
+    create_publishers_table = """
+    CREATE TABLE IF NOT EXISTS publishers (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) UNIQUE NOT NULL
+        email VARCHAR(255) UNIQUE NOT NULL,
+        phone_number VARCHAR(255) NOT NULL,
+        head_office_address VARCHAR(255) NOT NULL,
+        website VARCHAR(255) NOT NULL,
+        facebook VARCHAR(255) NOT NULL,
+        twitter VARCHAR(255)NOT NULL,
+        linkedin VARCHAR(255)NOT NULL,
+        instagram VARCHAR(255) NOT NULL
     );
     """
+    
     create_news_table = """
     CREATE TABLE IF NOT EXISTS news (
         id INT AUTO_INCREMENT PRIMARY KEY,
         category_id INT,
-        author_id INT,
-        editor_id INT,
+        reporter_id INT,
+        publisher_id INT,
         datetime DATETIME,
         title VARCHAR(255) NOT NULL,
         body TEXT,
         link VARCHAR(255),
         FOREIGN KEY (category_id) REFERENCES categories (id),
-        FOREIGN KEY (author_id) REFERENCES authors (id),
-        FOREIGN KEY (editor_id) REFERENCES editors (id)
+        FOREIGN KEY (reporter_id) REFERENCES repoters (id),
+        FOREIGN KEY (publisher_id) REFERENCES publishers (id)
     );
     """
     create_images_table = """
@@ -143,8 +151,8 @@ def create_tables(connection):
     );
     """
     execute_query(connection, create_categories_table)
-    execute_query(connection, create_authors_table)
-    execute_query(connection, create_editors_table)
+    execute_query(connection, create_repoters_table)
+    execute_query(connection, create_publishers_table)
     execute_query(connection, create_news_table)
     execute_query(connection, create_images_table)
     execute_query(connection, create_summaries_table)
@@ -156,11 +164,23 @@ if __name__ == "__main__":
     if conn is not None:
         create_tables(conn)
         
-        # read_categories_query = "SELECT * FROM categories"
-        # news_categories = execute_read_query(conn, read_categories_query)
-        # print(news_categories)
+        read_categories_query = "SELECT * FROM categories"
+        news_categories = execute_read_query(conn, read_categories_query)
+        print(news_categories)
 
-        # read_authors_query = "SELECT * FROM authors"
-        # news_authors = execute_read_query(conn, read_authors_query)
-        # print(news_authors)
+        read_repoters_query = "SELECT * FROM repoters"
+        news_repoters = execute_read_query(conn, read_repoters_query)
+        print(news_repoters)
+        
+        read_publishers_query = "SELECT * FROM publishers"
+        news_publishers = execute_read_query(conn, read_publishers_query)
+        print(news_publishers)
+        
+        read_news_query = "SELECT * FROM news"
+        news = execute_read_query(conn, read_news_query)
+        print(news)
+        
+        read_images_query = "SELECT * FROM images"
+        news_images = execute_read_query(conn, read_images_query)
+        print(news_images)
 
