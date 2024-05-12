@@ -36,7 +36,7 @@ def post_example():
     data = {
         'title': 'foo',
         'body': 'bar',
-        'userId': 1
+        'userId': 10
     }
     response = requests.post(url, json=data)
     
@@ -58,7 +58,8 @@ def main():
     post_example()
 
 if __name__ == "__main__":
-    main()
+    # main()
+    pass
 
 
 
@@ -66,9 +67,6 @@ if __name__ == "__main__":
 # 1. Modify the GET Example: Change the get_example function to fetch a list of posts instead of just one. Analyze the JSON structure and print out the titles of all posts.
 
 # 2. Error Handling: Add error handling to both functions to manage exceptions like connection errors or timeouts.
-
-# 3. Headers and Authentication: Modify the post_example function to include custom headers.
-
 
 
 # Advanced requests
@@ -108,6 +106,8 @@ def get_with_headers():
         print(f"Timeout Error: {errt}")
     except requests.exceptions.RequestException as err:
         print(f"Error: {err}")
+    except Exception as e:
+        print(f"Unknown Error: {e}")
 
 def post_with_authentication():
     """
@@ -138,6 +138,8 @@ def post_with_authentication():
         print(f"Timeout Error: {errt}")
     except requests.exceptions.RequestException as err:
         print(f"Error: {err}")
+    except Exception as e:
+        print(f"Unknown Error: {e}")
 
 def main():
     """
