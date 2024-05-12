@@ -43,7 +43,7 @@ def execute_query(connection, query, data=None):
 
     Returns
     -------
-    None
+    Id of last inserted row : int
     """
     cursor = connection.cursor()
     try:
@@ -52,10 +52,12 @@ def execute_query(connection, query, data=None):
         else:
             cursor.execute(query)
         connection.commit()
-        print("Query successful")
+        print("Query successful!")
+        return cursor.lastrowid
     except Error as e:
         print(f"The error '{e}' occurred")
-
+ 
+    
 def insert_category(connection, name, description):
     """
     Inserts a new category into the categories table.
@@ -71,14 +73,21 @@ def insert_category(connection, name, description):
 
     Returns
     -------
-    None
+    Category ID : int
     """
     query = """
     INSERT INTO categories (name, description)
     VALUES (%s, %s)
     """
     data = (name, description)
-    execute_query(connection, query, data)
+    
+    # cursor =  connection.cursor()  # Create a new cursor object    
+    # cursor.execute(query, data)  # Use the cursor to execute the query
+    # connection.commit()  # Commit the transaction
+    
+    # return cursor.lastrowid  # Return the ID of the last inserted row
+    cursor = execute_query(connection, query, data)
+    return cursor  # Return the ID of the inserted category
 
 def insert_reporter(connection, name, email):
     """
@@ -98,13 +107,21 @@ def insert_reporter(connection, name, email):
     Reorter ID : int
     """
     query = """
-    INSERT INTO reporters (name, email)
+    INSERT INTO repoters (name, email)
     VALUES (%s, %s)
     """
     data = (name, email)
-    execute_query(connection, query, data)
     
-    return cursor.lastrowid # Return the ID of the inserted reporter
+    # cursor = connection.cursor()  # Create a new cursor object
+    # cursor.execute(query, data)  # Use the cursor to execute the query
+    # connection.commit()  # Commit the transaction
+    
+    # return cursor.lastrowid  # Return the ID of the last inserted row
+    cursor = execute_query(connection, query, data)
+    if cursor is None:
+        print("Failed to execute query!!")
+        return None
+    return cursor # Return the ID of the inserted reporter
 
 def insert_publisher(connection, name, email, phone_number, head_office_address, website, facebook, twitter, linkedin, instagram):
     """
@@ -121,14 +138,24 @@ def insert_publisher(connection, name, email, phone_number, head_office_address,
 
     Returns
     -------
-    None
+    Publisher ID : int
     """
     query = """
     INSERT INTO publishers (name, email, phone_number, head_office_address, website, facebook, twitter, linkedin, instagram)
     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     data = (name, email, phone_number, head_office_address, website, facebook, twitter, linkedin, instagram)
-    execute_query(connection, query, data)
+    
+    # cursor = connection.cursor()  # Create a new cursor object
+    # cursor.execute(query, data)  # Use the cursor to execute the query
+    # connection.commit()  # Commit the transaction
+    
+    # return cursor.lastrowid  # Return the ID of the last inserted row
+    cursor = execute_query(connection, query, data)
+    if cursor is None:
+        print("Failed to execute query!!")
+        return None
+    return cursor # Return the ID of the inserted publisher
 
 def insert_news(connection, category_id, reporter_id, publisher_id, datetime, title, body, link):
     """
@@ -155,14 +182,24 @@ def insert_news(connection, category_id, reporter_id, publisher_id, datetime, ti
 
     Returns
     -------
-    None
+    News ID : int
     """
     query = """
     INSERT INTO news (category_id, reporter_id, publisher_id, datetime, title, body, link)
     VALUES (%s, %s, %s, %s, %s, %s, %s)
     """
     data = (category_id, reporter_id, publisher_id, datetime, title, body, link)
-    execute_query(connection, query, data)
+    
+    # cursor = connection.cursor()  # Create a new cursor object
+    # cursor.execute(query, data)  # Use the cursor to execute the query
+    # connection.commit()  # Commit the transaction
+    
+    # return cursor.lastrowid  # Return the ID of the last inserted row
+    cursor = execute_query(connection, query, data)
+    if cursor is None:
+        print("Failed to execute query!!")
+        return None
+    return cursor  # Return the ID of the last inserted row
 
 def insert_image(connection, news_id, image_url):
     """
@@ -179,14 +216,24 @@ def insert_image(connection, news_id, image_url):
 
     Returns
     -------
-    None
+    Image ID : int
     """
     query = """
     INSERT INTO images (news_id, image_url)
     VALUES (%s, %s)
     """
     data = (news_id, image_url)
-    execute_query(connection, query, data)
+    
+    # cursor = connection.cursor()  # Create a new cursor object
+    # cursor.execute(query, data)  # Use the cursor to execute the query
+    # connection.commit()  # Commit the transaction
+    
+    # return cursor.lastrowid  # Return the ID of the last inserted row
+    cursor = execute_query(connection, query, data)
+    if cursor is None:
+        print("Failed to execute query")
+        return None
+    return cursor # Return the ID of the last inserted row
 
 def insert_summary(connection, news_id, summary_text):
     """
@@ -218,38 +265,38 @@ if __name__ == "__main__":
     if conn is not None:
         # Insert categories
         insert_category(conn, "Politics", "All news related to politics")
-        insert_category(conn, "Sports", "All news related to sports")
-        insert_category(conn, "Entertainment", "All news related to entertainment")
-        insert_category(conn, "Technology", "All news related to technology")
-        insert_category(conn, "Business", "All news related to business")
+        # insert_category(conn, "Sports", "All news related to sports")
+        # insert_category(conn, "Entertainment", "All news related to entertainment")
+        # insert_category(conn, "Technology", "All news related to technology")
+        # insert_category(conn, "Business", "All news related to business")
         
         # Insert reporters
         insert_reporter(conn, "Sorowar", "sorowar@ugrad.iiuc.ac.bd")
-        insert_reporter(conn, "Munna", "munna@ugrad.iiuc.ac.bd")
-        insert_reporter(conn, "Rahim", "rahim@ugrad.iiuc.ac.bd")
-        insert_reporter(conn, "Karim", "karim@ugrad.iiuc.ac.bd")
-        insert_reporter(conn, "Dipto", "dipto@ugrad.iiuc.ac.bd")
+        # insert_reporter(conn, "Munna", "munna@ugrad.iiuc.ac.bd")
+        # insert_reporter(conn, "Rahim", "rahim@ugrad.iiuc.ac.bd")
+        # insert_reporter(conn, "Karim", "karim@ugrad.iiuc.ac.bd")
+        # insert_reporter(conn, "Dipto", "dipto@ugrad.iiuc.ac.bd")
         
         # Insert publishers
         insert_publisher(conn, "BBC", "bbc@ugrad.iiuc.ac.bd", 1234567890, "Dhaka, Bangladesh", "bbc.com", "facebook.com/bbc", "twitter.com/bbc", "linkedin.com/bbc","instagram.com/bbc")
-        insert_publisher(conn, "IIUC", "iiuc@ugrad.iiuc.ac.bd", 5678901234, "Dhaka, Bangladesh", "iiuc.ac.bd", "facebook.com/iiuc", "twitter.com/iiuc", "linkedin.com/iiuc", "instagram.com/iiuc")
-        insert_publisher(conn, "Prothom Alo", "p_alo@gmail.com", 1234567890, "Dhaka, Bangladesh", "prothomalo.com", "facebook.com/prothomalo", "twitter.com/prothomalo", "linkedin.com/prothomalo", "instagram.com/prothomalo")
-        insert_publisher(conn, "Daily Star", "d_star@gmail.com", 1234567890, "Dhaka, Bangladesh", "dailystar.com.bd", "facebook.com/dailystar", "twitter.com/dailystar", "linkedin.com/dailystar", "instagram.com/dailystar")
-        insert_publisher(conn, "CNN", "cnn@ugrad.iiuc.ac.bd", 1234567890, "Dhaka, Bangladesh", "cnn.com", "facebook.com/cnn", "twitter.com/cnn", "linkedin.com/cnn", "instagram.com/cnn")
+        # insert_publisher(conn, "IIUC", "iiuc@ugrad.iiuc.ac.bd", 5678901234, "Dhaka, Bangladesh", "iiuc.ac.bd", "facebook.com/iiuc", "twitter.com/iiuc", "linkedin.com/iiuc", "instagram.com/iiuc")
+        # insert_publisher(conn, "Prothom Alo", "p_alo@gmail.com", 1234567890, "Dhaka, Bangladesh", "prothomalo.com", "facebook.com/prothomalo", "twitter.com/prothomalo", "linkedin.com/prothomalo", "instagram.com/prothomalo")
+        # insert_publisher(conn, "Daily Star", "d_star@gmail.com", 1234567890, "Dhaka, Bangladesh", "dailystar.com.bd", "facebook.com/dailystar", "twitter.com/dailystar", "linkedin.com/dailystar", "instagram.com/dailystar")
+        # insert_publisher(conn, "CNN", "cnn@ugrad.iiuc.ac.bd", 1234567890, "Dhaka, Bangladesh", "cnn.com", "facebook.com/cnn", "twitter.com/cnn", "linkedin.com/cnn", "instagram.com/cnn")
         
         # Insert news articles
         insert_news(conn, 1, 1, 1, "2022-01-01 00:00:00", "Test News Article 1", "This is the body of the first news article.", "https://example.com/news-article-1")
-        insert_news(conn, 2, 2, 2, "2022-01-02 00:00:00", "Test News Article 2", "This is the body of the second news article.", "https://example.com/news-article-2")
-        insert_news(conn, 3, 3, 3, "2022-01-03 00:00:00", "Test News Article 3", "This is the body of the third news article.", "https://example.com/news-article-3")
-        insert_news(conn, 4, 4, 4, "2022-01-04 00:00:00", "Test News Article 4", "This is the body of the fourth news article.", "https://example.com/news-article-4")
-        insert_news(conn, 5, 5, 5, "2022-01-05 00:00:00", "Test News Article 5", "This is the body of the fifth news article.", "https://example.com/news-article-5")
+        # insert_news(conn, 2, 2, 2, "2022-01-02 00:00:00", "Test News Article 2", "This is the body of the second news article.", "https://example.com/news-article-2")
+        # insert_news(conn, 3, 3, 3, "2022-01-03 00:00:00", "Test News Article 3", "This is the body of the third news article.", "https://example.com/news-article-3")
+        # insert_news(conn, 4, 4, 4, "2022-01-04 00:00:00", "Test News Article 4", "This is the body of the fourth news article.", "https://example.com/news-article-4")
+        # insert_news(conn, 5, 5, 5, "2022-01-05 00:00:00", "Test News Article 5", "This is the body of the fifth news article.", "https://example.com/news-article-5")
         
         # Insert images
         insert_image(conn, 1, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
-        insert_image(conn, 2, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
-        insert_image(conn, 3, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
-        insert_image(conn, 4, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
-        insert_image(conn, 5, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
+        # insert_image(conn, 2, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
+        # insert_image(conn, 3, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
+        # insert_image(conn, 4, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
+        # insert_image(conn, 5, "https://upload.wikimedia.org/wikipedia/commons/0/09/INews.png")
         
         conn.commit()
         conn.close()
