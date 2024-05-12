@@ -116,9 +116,10 @@ if __name__ == "__main__":
         # collect all news link and process the link
         session = HTMLSession()
         main_response = session.get(main_link)
-        all_news_links = main_response.html.find('a')
+        all_news_links = main_response.html.find('a.title-link')
         for news_link in all_news_links:
             # url = "https://www.prothomalo.com/bangladesh/district/l9iivxgmt0"
             publisher_website, publisher, title, reporter, news_datetime, category, news_body, images = single_news_scraper(news_link)
             print(publisher, title, reporter, news_datetime, category, images)
             process_and_insert_news_data(conn, publisher_website, publisher, title, reporter, news_datetime, category, images, news_link)
+            # Solved!! by- Sorowar Mahabub, C201032!
