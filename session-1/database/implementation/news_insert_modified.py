@@ -56,49 +56,49 @@ def insert_category(connection, name, description):
     data = (name, description)
     execute_query(connection, query, data)
 
-def insert_author(connection, name, email):
+def insert_reporter(connection, name, email):
     """
-    Inserts a new author into the authors table.
+    Inserts a new reporter into the reporters table.
 
     Parameters
     ----------
     connection : mysql.connector.connection.MySQLConnection
         The connection object to the database.
     name : str
-        The name of the author.
+        The name of the reporter.
     email : str
-        The email of the author.
+        The email of the reporter.
 
     Returns
     -------
     None
     """
     query = """
-    INSERT INTO authors (name, email)
+    INSERT INTO reporters (name, email)
     VALUES (%s, %s)
     """
     data = (name, email)
     execute_query(connection, query, data)
 
-def insert_editor(connection, name, email):
+def insert_publisher(connection, name, email):
     """
-    Inserts a new editor into the editors table.
+    Inserts a new publisher into the publishers table.
 
     Parameters
     ----------
     connection : mysql.connector.connection.MySQLConnection
         The connection object to the database.
     name : str
-        The name of the editor.
+        The name of the publisher.
     email : str
-        The email of the editor.
+        The email of the publisher.
 
     Returns
     -------
     None
     """
     query = """
-    INSERT INTO editors (name, email)
+    INSERT INTO publishers (name, email)
     VALUES (%s, %s)
     """
     data = (name, email)
@@ -191,5 +191,5 @@ if __name__ == "__main__":
     conn = create_db_connection()
     if conn is not None:
         insert_category(conn, "Politics", "All news related to politics")
-        insert_author(conn, "John Doe", "test@example.com")
+        insert_reporter(conn, "John Doe", "test@example.com")
         # Add more insert calls for other tables

@@ -1,32 +1,7 @@
 import os
 import mysql.connector
 from mysql.connector import Error
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
-
-def create_db_connection():
-    """
-    Create a database connection to the MySQL database specified by the db_name.
-
-    Returns
-    -------
-    connection : mysql.connector.connection.MySQLConnection
-        The connection object to the database.
-    """
-    try:
-        connection = mysql.connector.connect(
-            host=os.getenv("DB_HOST"),
-            user=os.getenv("DB_USER"),
-            passwd=os.getenv("DB_PASS"),
-            database=os.getenv("DB_NAME")
-        )
-        print("MySQL Database connection successful")
-        return connection
-    except Error as e:
-        print(f"The error '{e}' occurred")
-        return None
+from db_connection import create_db_connection
 
 def execute_query(connection, query):
     """
@@ -154,11 +129,11 @@ if __name__ == "__main__":
     conn = create_db_connection()
     if conn is not None:
         # create_tables(conn)
-        read_categories_query = "SELECT * FROM categories"
-        news_categories = execute_read_query(conn, read_categories_query)
-        print(news_categories)
+        # read_categories_query = "SELECT * FROM categories;"
+        # news_categories = execute_read_query(conn, read_categories_query)
+        # print(news_categories)
 
-        read_authors_query = "SELECT * FROM authors"
+        read_authors_query = "SELECT * FROM authors;"
         news_authors = execute_read_query(conn, read_authors_query)
         print(news_authors)
 
