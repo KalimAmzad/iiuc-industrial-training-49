@@ -66,11 +66,11 @@ def create_profile(name, email, *interests, **details):
     return profile
 
 profile = create_profile("Bob", "bob@example.com", "nasheed", "art", age=25, location="New York")
-# print(profile)
-profile = create_profile("Bob", "bob@example.com", "nasheed", "art", "calliography", age=35, location="Boston")
-# print(profile)
+print(profile)
+profile = create_profile("Bob", "bob@example.com", "nasheed", "art", "calliography", age=35)
+print(profile)
 profile = create_profile("Bob", "bob@example.com", "swimming", "art", "calliography", "listening_quran", age=27, location="Chicago")
-# print(profile)
+print(profile)
 
 
 # Section 3: Variable Scope
@@ -138,16 +138,7 @@ divide(10, "0")
 # Assignments
 # -----------
 # Assignment 1: Write a function that calculates the factorial of a number and handles any potential errors.
-def factorial(n):
-    if not isinstance(n, int) or n < 0:
-        print("Error: The number must be a non-negative integer.")
-        return None
-    if n == 0:
-        return 1
-    else:
-        return n * factorial(n - 1)
 
-print("Factorial of 5:", factorial(5))
 
 # Congratulations on completing the advanced section on Python functions!
 # Review the assignments, try to solve them, and check your understanding of function concepts.

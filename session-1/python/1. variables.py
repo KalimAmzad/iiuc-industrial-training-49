@@ -23,14 +23,13 @@ x = 5
 y = "Hello, Python learners!"
 
 # You can print the variables to see their values.
-# print(x)
-# print(y)
+print(x)
+print(y)
 
 # Assignment 1: Create two variables, one holding a number and the other holding your name. Then print both.
 # Write your code below:
 age = 22
 name = "Ibrahim bin Karim"
-
 # print("Age: ", age, end="; ")
 # print("Name: ", name)
 
@@ -45,10 +44,10 @@ c = "Python"        # str
 d = True            # bool
 
 # You can check the type of any variable by using the type() function.
-# print(type(a))
-# print(type(b))
-# print(type(c))
-# print(type(d))
+print(type(a))
+print(type(b))
+print(type(c))
+print(type(d))
 
 # Assignment 2: Create variables of different types and use the type() function to check their types.
 # Write your code below:
@@ -58,7 +57,7 @@ d = True            # bool
 # -------------------------------------------------------------
 """
 Variable names should be:
-- Clear and descriptive.
+- Clear, descriptive & relevant.
 - Start with a letter or an underscore.
 - Only contain alpha-numeric characters and underscores (A-z, 0-9, and _).
 - Case-sensitive (age, Age, and AGE are different variables).

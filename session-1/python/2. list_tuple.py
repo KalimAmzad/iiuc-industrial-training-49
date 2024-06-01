@@ -27,8 +27,13 @@ matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 # Accessing Elements
 # You can access elements by their index, which starts at 0.
-first_element = simple_list[0]  # Outputs 1
-second_row_first_col = matrix[1][0]  # Outputs 4
+first_element = simple_list[2]  # Outputs 9
+second_row_first_col = matrix[1][2]  # Outputs 4
+list_range = simple_list[1:4] # Outputs [2, 9, 4]
+# list_stepping = simple_list[1:7:2]
+list_stepping = simple_list[::1]
+print("List Stepping: ", list_stepping)
+print("List Range: ", list_range)
 
 # List Operations
 # Adding elements
@@ -64,6 +69,7 @@ print("Simple List: ", simple_list)
 
 list_copy = simple_list.copy()
 list_copy.append(8)
+print("simple_list id", id(simple_list), "list_copy id: ", id(list_copy))
 print("List Copy: ", list_copy)
 print("Simple List: ", simple_list)
 
@@ -82,6 +88,9 @@ list_length = len(simple_list)
 simple_tuple = (1, 2, 3, 4, 5)
 mixed_tuple = (1, "Hello", 3.14, True)
 temp_tuple = ()  # Empty tuple
+
+simple_tuple[2] = 76768  # This will raise TypeError as tuples are immutable
+print(simple_tuple)
 
 # Accessing elements
 first_tuple_element = simple_tuple[0]

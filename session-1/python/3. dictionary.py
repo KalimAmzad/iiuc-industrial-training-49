@@ -19,8 +19,8 @@ Each section includes detailed explanations, examples, and challenging assignmen
 
 # Example 1: Creating and Using Dictionaries
 simple_dict = {'name': 'John', 'age': 30, 'city': 'New York'}
-# print(simple_dict['name'])  # Accessing value by key
-# print(simple_dict.get('address', "Dhaka"))  # Accessing value by key
+# print(simple_dict['address'])  # Accessing value by key
+# print(simple_dict.get('address', 'USA'))  # Accessing value by key
 
 
 # Updating dictionary
@@ -30,9 +30,9 @@ simple_dict['country'] = 'USA'  # Adds a new key-value pair
 
 # Dictionary Methods
 # keys(), values(), items()
-# print(simple_dict.keys())  # Prints all keys
-# print(simple_dict.values())  # Prints all values
-# print(simple_dict.items())  # Prints all key-value pairs as tuples
+print(simple_dict.keys())  # Prints all keys
+print(simple_dict.values())  # Prints all values
+print(simple_dict.items())  # Prints all key-value pairs as tuples
 
 # get()
 print(simple_dict.get('name'))  # Returns 'John'

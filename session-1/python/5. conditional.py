@@ -146,23 +146,6 @@ print(f"Total shipping cost: ${shipping_cost:.2f}")
 
 # Assignment 4: Implement a system that categorizes a day based on temperature and weather conditions.
 # Use nested if-elif-else and logical operators to determine if it's a beach day, skiing day, or a stay-home day.
-temperature = 30  # in Celsius
-weather = "sunny"
-
-if weather == "sunny":
-    if temperature > 25:
-        print("It's a perfect beach day.")
-    elif temperature > 15:
-        print("It's a nice day for a walk.")
-    else:
-        print("It's sunny but too cold, stay home.")
-elif weather == "snowy":
-    if temperature < 0:
-        print("Great day for skiing.")
-    else:
-        print("Snowy but not ideal for skiing, stay home.")
-else:
-    print("Not a sunny or snowy day, best to stay indoors.")
 
 
 # Congratulations on completing the advanced section on Python conditional statements!

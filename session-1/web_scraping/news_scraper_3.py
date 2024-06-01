@@ -96,7 +96,7 @@ def single_news_scraper(url):
         #     else:
         #         print("No image tag found.")
         
-        # print(publisher_website, publisher, title, reporter, news_datetime, category, images)
+        print(publisher_website, publisher, title, reporter, news_datetime, category, images)
         # process_and_insert_news_data(conn, publisher_website, publisher, title, reporter, reporter_location, datetime, category, images)
         return publisher_website, publisher, title, reporter, news_datetime, category, news_body, images
     except Exception as e:

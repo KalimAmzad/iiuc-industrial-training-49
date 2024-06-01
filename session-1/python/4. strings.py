@@ -27,7 +27,7 @@ simple_string = "Hello, Python learners!"
 
 # String Methods
 # Finding substrings
-print(simple_string.find('Python'))  # Returns the start index of 'Python'
+# print(simple_string.find('Python'))  # Returns the start index of 'Python'
 
 # Replacing substrings
 modified_string = simple_string.replace('learners', 'developers')
@@ -41,11 +41,11 @@ marks_list = marks.split(': ')  # Splits the string into a list of marks
 # print("Array of marks:", marks_list)
 
 words = simple_string.split(',')  # Splits the string into a list of words
-print("Array of words:", words)
+# print("Array of words:", words)
 
 # Joining strings
-joined_string = ' '.join(words)  # Joins the list back into a single string
-print("Joined string:", joined_string)
+joined_string = '-'.join(marks_list)  # Joins the list back into a single string
+# print("Joined string:", joined_string)
 
 # Case conversion
 # print(simple_string.upper())  # Converts to uppercase
@@ -53,9 +53,9 @@ print("Joined string:", joined_string)
 
 # Stripping whitespace
 user_input = "   some user input   "
-print(user_input.strip())  # Removes leading and trailing whitespace
-print(user_input.rstrip())  # Removes trailing whitespace
-print(user_input.lstrip())  # Removes leading whitespace
+# print(user_input.strip())  # Removes leading and trailing whitespace
+# print(user_input.rstrip())  # Removes trailing whitespace
+# print(user_input.lstrip())  # Removes leading whitespace
 
 # Assignment 1: Create a string that contains a simple bio data like name, age, and country. Extract each piece of information and print them separately.
 # Write your code below:
@@ -69,11 +69,11 @@ print(user_input.lstrip())  # Removes leading whitespace
 name = "Alice"
 age = 30
 greeting = f"Hello, my name is {name} and I am {age} years old."
-print(greeting)
+# print(greeting)
 
 # Old-style formatting
 old_greeting = "Hello, my name is %s and I am %d years old." % (name, age)
-print(old_greeting)
+# print(old_greeting)
 
 
 # Assignment 2: Create a formatted string that includes data from a list or dictionary. For example, use a dictionary to store a person's information and format a string to include it.
@@ -87,25 +87,25 @@ print(old_greeting)
 # Example 1: Advanced Slicing
 complex_string = "Hello, Python enthusiasts!"
 reverse_string = complex_string[::-1]  # Reverses the string using slicing
-print(reverse_string)
+# print(reverse_string)
 
 # Multiline strings
 multiline_string = """This is a string that spans
 multiple lines within triple quotes."""
-print(multiline_string)
+# print(multiline_string)
 
 # Raw strings
 path = r"C:\new_folder\test.txt"  # Raw string ignores escape characters
-print(path)
+# print(path)
 
 # String Methods
 # Counting substrings
-print("The count of 'n' is:", complex_string.count('n'))
+# print("The count of 'n' is:", complex_string.count('n'))
 
 # Formatting strings with str.format() and f-strings
 pi = 3.14159
 formatted_string = "The value of pi is {:.2f}".format(pi)  # Formatting to two decimal places
-print(formatted_string)
+# print(formatted_string)
 
 # Assignment 3: Write a function that takes a string and returns a dictionary with the counts of each character in the string.
 # Write your code below:
@@ -119,7 +119,7 @@ print(formatted_string)
 import re
 
 # Basic Regex: Matching Literal Strings
-pattern = 'world'
+pattern = 'earth'
 text = 'Hello, world!'
 match = re.search(pattern, text)
 if match:
@@ -129,27 +129,27 @@ else:
 
 
 # Character Classes
-pattern = r'\d+'  # Matches one or more digits
+pattern = r'\d'  # Matches one or more digits
 text = 'There are 123 apples, 45 oranges, and 78 bananas.'
 matches = re.findall(pattern, text)
 print("Numbers found:", matches)
 
 # Alternation and Grouping
 pattern = r'apple|banana'  # Matches 'apple' or 'banana'
-text = 'I like apples, oranges and bananas.'
+text = 'I like apples, oranges.'
 matches = re.findall(pattern, text)
 print("Fruits found:", matches)
 
 
 # Positive Lookahead
-pattern = r'\d{2}(?=px)'  # Matches a number only if it's followed by 'px'
+pattern = r'\d{3}(?=px)'  # Matches a number only if it's followed by 'px'
 text = 'The image is 106px by 209px.'
 matches = re.findall(pattern, text)
 print("Numbers followed by 'px':", matches)
 
 # Non-capturing Group
 pattern = r'(?:\d{3}-)?\d{3}-\d{4}'  # Matches phone numbers with optional area code
-text = 'Call 415-555-1234 or 555-4321'
+text = 'Call 415-555-1234 or 555-4321 or 008-718-6897'
 matches = re.findall(pattern, text)
 print("Phone numbers found:", matches)
 
@@ -158,7 +158,7 @@ print("Phone numbers found:", matches)
 # A more detailed regex for validating an email address.
 email_regex = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
 email = "example@domain.com"
-# email = "example@domain"
+email = "example@domain"
 if re.match(email_regex, email):
     print("Valid email!")
 else:
@@ -168,7 +168,7 @@ else:
 # Example: Extracting Phone Numbers
 # Regex to match US phone number formats
 phone_regex = r"\b\d{3}[-.]?\d{3}[-.]?\d{4}\b"
-text = "Call me at 415-555-1011 tomorrow, or at 415.555.9999 for office line."
+text = "Call me at 415-555-1011 tomorrow, or 564-9712 or at 415.555.9999 for office line."
 phones = re.findall(phone_regex, text)
 print("Phone numbers found:", phones)
 
@@ -179,8 +179,13 @@ print("Censored text:", replaced_text)
 
 # Assignment: Write a regex to find all the hashtags in a string.
 text_with_hashtags = "This is a #great day to learn #regex in #Python!"
-hashtags = re.findall(r"#(\w+)", text_with_hashtags)
-print("Hashtags:", hashtags)
+
+
+# Assignments: Write a regex to find the Bangladesh phone number with all variations.
+# 01454565767
+# +880196345634
+# 0088785674657
+# 01845-567567
 
 # Congratulations on completing the advanced section on Python strings!
 # Review the assignments, try to solve them, and check your understanding of string manipulation techniques.
