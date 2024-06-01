@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -12,6 +13,11 @@ news = {
     5: {"title": "News 5", "content": "This is the content of news 5", "author": "Author 5"}
 }
 
+
+class News(BaseModel):
+    title: str
+    content: str
+    author: str
 
 @app.get("/")
 def working():
@@ -29,11 +35,18 @@ def read_news(news_id: int):
         return news[news_id]
     else:
         return {"error": "News of ID- {news_id} not found!"}
+
+
+@app.post("/create_news")
+def create_news(news: News):
+    print(news)
     
-@app.get("/news/{news_id}/content")
-def news_by_title_query
+    news_id = len(news) + 1
+    news = News(title=news.title, content=news.content, author=news.author)
+    news[news_id] = news
+    return news[news_id]
 
 
 if __name__ == "__myapi__":
-    # uvicorn.run(app, host="localhost", port=8000, reload=True)
-    uvicorn.run("basic:app", host="localhost", port=8000, reload=True)
+    uvicorn.run(app, host="localhost", port=8000, reload=True)
+    # uvicorn.run("basic:app", host="localhost", port=8000, reload=True)
