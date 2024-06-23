@@ -6,11 +6,13 @@ def get_news(db: Session, news_id: int):
 
 def get_news_list(db: Session, skip: int = 0, limit: int = 10):
     print(db, skip, limit)
-    return db.query(models.News).offset(skip).limit(limit).all()
+    return db.query(models.News).order_by(models.News.datetime.desc()).offset(skip).limit(limit).all()
 
 
 def get_or_create_category(db: Session, name: str, description: str):
+    # print(db, name, description)
     category = db.query(models.Category).filter(models.Category.name == name).first()
+    # print("DB Response: ", category)
     if category is None:
         category = models.Category(name=name, description=description)
         db.add(category)
@@ -54,6 +56,7 @@ def create_news(db: Session, news: schemas.NewsCreate):
     publisher = get_or_create_publisher(db, news.news_publisher, f"https://{news.publisher_website}")
     news_exist = get_news_existance(db, news_title=news.title)
 
+    print(category.name, reporter.name, publisher.name)
     if news_exist:
         return news_exist
 
@@ -67,6 +70,7 @@ def create_news(db: Session, news: schemas.NewsCreate):
         reporter_id=reporter.id,
         publisher_id=publisher.id
     )
+    print(db_news)
     db.add(db_news)
     db.commit()
     db.refresh(db_news)
@@ -75,3 +79,15 @@ def create_news(db: Session, news: schemas.NewsCreate):
         create_image(db, news_id=db_news.id, url=image_url)
 
     return db_news
+
+
+def insert_summary(db: Session, news_id: int, summary_text: str):
+    db_summary = models.Summary(news_id=news_id, summary_text=summary_text)
+    db.add(db_summary)
+    db.commit()
+    db.refresh(db_summary)
+    return db_summary
+
+
+def get_summary(db: Session, summary_id: int):
+    return db.query(models.Summary).filter(models.Summary.id == summary_id).first()

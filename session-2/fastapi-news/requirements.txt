@@ -7,3 +7,4 @@ requests-html
 lxml_html_clean
 python-dotenv
 mysql-connector-python
+groq

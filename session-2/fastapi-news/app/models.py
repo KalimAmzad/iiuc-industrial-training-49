@@ -57,3 +57,9 @@ class Image(Base):
     url = Column(String)
 
     news = relationship("News")
+
+class Summary(Base):
+    __tablename__ = "summaries"
+    id = Column(Integer, primary_key=True, index=True)
+    news_id = Column(Integer, ForeignKey('news.id'))
+    summary_text = Column(Text)

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 
-from app.routers import news
+from app.routers import news, summary
 
 # app = FastAPI()
 
@@ -24,6 +24,7 @@ app = FastAPI(
 )
 
 app.include_router(news.router)
+app.include_router(summary.router)
 
 @app.get("/")
 def read_root():

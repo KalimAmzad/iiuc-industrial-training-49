@@ -49,6 +49,7 @@ def single_news_scraper(url: str):
 def scrape_and_store_news(url: str, db: SessionLocal):
     # db = SessionLocal()
     news_data = single_news_scraper(url)
+    print(news_data)
     inserted_news = ""
     if news_data:
         # print(news_data)
